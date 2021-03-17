@@ -1,0 +1,5 @@
+numpy==1.16.4
+pandas==1.1.5
+requests==2.24.0
+altair==4.1.0
+pycoingecko==1.4.0
