@@ -211,7 +211,7 @@ if df_choice:
             #st.altair_chart(ss, use_container_width=True)
             
             
-            st.write(currency_hist_20WBTC)
+            #st.write(currency_hist_20WBTC)
             aa = alt.Chart(currency_hist_20WBTC.reset_index(), width=630, title="BTC vs its 20W MA").mark_tick().encode(
                     alt.X('index', title='Date'),
                     alt.Y('BTC above 20W MA', title=None, axis=alt.Axis(values=["Below", "Above"])),
