@@ -13,7 +13,7 @@ from altair.expr import datum, if_
 
 cg = CoinGeckoAPI()
 
-#@st.cache
+@st.cache
 def get_price(coin):
     price_dict = cg.get_price(ids=coin, vs_currencies='usd')
     return price_dict[coin]['usd']
