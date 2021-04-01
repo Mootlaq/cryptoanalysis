@@ -136,7 +136,7 @@ if df_choice:
         #st.write(currency_hist_20WBTC)
         #currency_hist['men_women'] = population['sex'].map({1: 'Men', 2: 'Women'})
         if st.checkbox('show price color coded by wether Bitcoin is above/below the 20 Week moving average'):
-            chart = alt.Chart(currency_hist_20WBTC.reset_index()).mark_circle(size=70, opacity=0.6).encode(
+            chart = alt.Chart(currency_hist_20WBTC.reset_index(), title="{} Price vs Time".format(df_choice)).mark_circle(size=70, opacity=0.6).encode(
                 alt.X('index', axis=alt.Axis(title='Date')),
                 alt.Y('price_x',axis=alt.Axis(title='Price'), scale=alt.Scale(type='log')),
                 color=alt.Color('price above BTC 20W MA',scale=alt.Scale(scheme='category20'), legend=alt.Legend(title="BTC Price"))).transform_calculate(
@@ -145,7 +145,7 @@ if df_choice:
             #st.line_chart(currency_hist['price'])
             st.altair_chart(chart, use_container_width=True)   
         else:
-            line_chart = alt.Chart(currency_hist_20WBTC.reset_index()).mark_line().encode(
+            line_chart = alt.Chart(currency_hist_20WBTC.reset_index(), title="{} Price vs Time".format(df_choice)).mark_line().encode(
                 alt.X('index', axis=alt.Axis(title='Date')),
                 alt.Y('price_x',axis=alt.Axis(title='Price'), scale=alt.Scale(type='log'))).interactive()
             
