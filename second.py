@@ -38,40 +38,6 @@ def get_history(coin):
     return df
 
 
-Ben_statememnts = [
-    "I don't consider Ethereum an altcoin",
-
-    "It's not about return, it's about your risk adjusted return",
-    
-    "I can't tell you what's gonna happen in the short term I just try to react to it",
-    
-    "Remember it's better to accumulate a coin when it's going quiet not when it's going parabolic",
-    
-    "If btc makes sideways action, then expect altcoins to start running again",
-    
-    "It's all fun and games until you wake up one day and you're down 20 or 30%" ,
-    
-    "Getting your portfolio in a position where you can handle all three scenarios is the way to win in crypto",
-    
-    "The main reason I hold LINK is: its negative volatility is offset by Bitcoin positive volatility",
-    
-    "You'll never go broke taking profits",
-    
-    "You'll never go broke taking profits",
-    
-    "We need Ethereum to outperform Bitcoin in order to justify holding it",
-    
-    "Expecting an immediate ROI is pretty much gambling",
-    
-    "I think if you're in crypto, I think the majority of your portfolio should be in Bitcoin",
-    
-    "The faster you get to thinking of crypto in terms of more than USD, the better. we look at Ethereum and LINK in terms of Bitcoin not just USD. this will help you understand what’s going on and be intuitive about what to do",
-    
-    "The goal is to time momentum shifts in the market not chase pumps",
-    
-    "The focus is to slowly move in and out, not pretend like we can time bottoms and tops",
-]
-
 choices = ['Bitcoin', 'Ethereum', 'Chainlink', 'Polkadot', 'Cardano', 'Avalanche', "About"]
 
 df_choice = st.sidebar.radio('Currency', choices)
@@ -288,266 +254,48 @@ if df_choice:
 
 
 
-randnum = np.random.randint(len(Ben_statememnts))
-statement = Ben_statememnts[randnum]
-st.sidebar.markdown("---")
-st.sidebar.write("> {} --  **Benjamin Cowen** ".format(statement))
-st.sidebar.markdown("")
 
 
 
+# Ben_statememnts = [
+#     "I don't consider Ethereum an altcoin",
 
-
-###################### ETH 
-    # st.markdown("---")
-    # BTCETH20drop = pd.read_csv('BTCETH20drop.csv')
-    # #st.write(BTCETH20drop)
-    # BTCETH = alt.Chart(BTCETH20drop.reset_index(), title="When Bitcoin drops 20%, what does Ethereum do?").mark_bar().encode(
-    # alt.X('Date'),
-    # #y='ETH 1W change percent',
-    # alt.Y('ETH 1W change percent', axis=alt.Axis(title="ETH price drop (%)")),
-    # tooltip=['BTC 1W change percent', 'ETH 1W change percent'],
-    # color=alt.Color('ETH dropped more', scale=alt.Scale(scheme='category20'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
-    #     'ETH dropped more', if_(datum['ETH dropped more'] != 0, 'Less', 'More')).interactive()
-
-    # st.altair_chart(BTCETH, use_container_width=True)
-
-
-
-###################### LINK
-    # BTCLINK20drop = pd.read_csv('BTCLINK20drop.csv')
-    # #st.write(BTCLINK20drop)
-    # BTCLINK = alt.Chart(BTCLINK20drop.reset_index(), title="When Bitcoin drops 20%, what does LINK do?").mark_bar().encode(
-    # alt.X('Date'),
-    # alt.Y('LINK 1W change percent', axis=alt.Axis(title="LINK price drop (%)")),
-    # tooltip=['BTC 1W change percent', 'LINK 1W change percent'],
-    # color=alt.Color('LINK dropped more', scale=alt.Scale(scheme='category20'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
-    #     'LINK dropped more', if_(datum['LINK dropped more'] != 0, 'Less', 'More')).interactive()
-
-    # st.altair_chart(BTCLINK, use_container_width=True)
-
-
-###################### ADA
-    # BTCADA20drop = pd.read_csv('BTCADA20drop.csv')
-    # #st.write(BTCADA20drop)
-    # BTCADA = alt.Chart(BTCADA20drop.reset_index(), title="When Bitcoin drops 20%, what does Cardano do?").mark_bar().encode(
-    # alt.X('Date'),
-    # alt.Y('ADA 1W change percent', axis=alt.Axis(title="ADA price drop (%)")),
-    # alt.Color('ADA dropped more', scale=alt.Scale(scheme='category20'), legend=alt.Legend(title="Drop compared to BTC")),
-    # tooltip=['BTC 1W change percent', 'ADA 1W change percent']).transform_calculate(
-    #     'ADA dropped more', if_(datum['ADA dropped more'] != 0, 'Less', 'More')).interactive()
-
-    # st.altair_chart(BTCADA, use_container_width=True)
+#     "It's not about return, it's about your risk adjusted return",
     
-#color=alt.condition(alt.datum['ADA dropped more']==0, alt.value('red'), alt.value('lightgray')
-
-
-
-
-
-
-
-
-# if df_choice == 'Bitcoin':
-#     st.header('Bitcoin Annual Price')
-
-#     annual_chart_line = alt.Chart(BTC_annual_price.reset_index()).mark_line().encode(
-#         alt.X('year:N'),
-#         alt.Y('price', axis=alt.Axis(title='Average Price'), scale=alt.Scale(type='log', domain=(100,11000), zero=False))).interactive()
-
-#     annual_chart_circle = alt.Chart(BTC_annual_price.reset_index()).mark_point(size=60).encode(
-#         alt.X('year:N'),
-#         alt.Y('price', scale=alt.Scale(type='log', domain=(100,11000), zero=False)),
-#         tooltip=['year', 'price']).interactive()
-
-#     annual_chart = annual_chart_line + annual_chart_circle
-#     st.altair_chart(annual_chart, use_container_width=True)
-
-# other_choices = ['Annual price', 'Something else']
-
-# ss = st.sidebar.radio('Other stuff', other_choices)
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ------------------------------------------------------------------------
-#st.title('Bitcoin Charts')
-# st.markdown("""
-# ---
-# """)
-# btcprice = get_price('bitcoin'.lower())
-
-# st.subheader("price: {}".format(btcprice))
-
-# df = pd.read_csv('btcdf.csv', index_col='date')
-# #st.write(df['price'])
-
-# st.line_chart(df['price'], height=500)
-
-
-
+#     "I can't tell you what's gonna happen in the short term I just try to react to it",
     
-# #     return df
-
-# #@st.cache
-# # def tribe_df(tribe):
-# #     return df[df['LastName'] == tribe]
-
-# # df = load_data('btcdf.csv')
-
-
-# '''
-# st.markdown("""
-# <style>
-
-# body {
-#     text-align: center;
-# }
-
-# </style>
-#     """, unsafe_allow_html=True)
-# '''
-
-
-# st.image('saadlogo.png',width=200)
-
-
-
-
-
-
-# if df_choice == 'كل الناخبين':
-#     st.header('جدول الناخبين')
-#     st.text('(ملاحظة: لقراءة الجدول بشاشة كاملة اضعظ على أيقونة الأسهم أعلى اليمين)')
-#     st.dataframe(df, height=800)
-#     st.dataframe(df.describe())
-
-# elif df_choice == 'ناخبي مطير':
-#     st.header('ناخبي مطير')
-#     mutair = tribe_df('المطيري')
-#     st.dataframe(mutair, height=400)
-# elif df_choice == 'ناخبي باقي القبائل':
+#     "Remember it's better to accumulate a coin when it's going quiet not when it's going parabolic",
     
-#     option = st.sidebar.selectbox(
-#     'Filter voters by tribe',
-#         list(tribes.keys()))
-#     st.header(option)
-#     filtered_df = tribe_df(tribes[option])
-#     filtered_df
-# elif df_choice == 'البحث':
-#     name = st.sidebar.text_input('Search by name')
-#     if name:
-#         result = df[df['Name'].str.contains(name)]
-#         st.subheader('search result')
-#         st.dataframe(result)
-
-# st.markdown('---')
-# # if st.sidebar.checkbox('Show filtered table'):
-# #     option = st.sidebar.selectbox(
-# #     'Filter voters by tribe',
-# #         tribes, index=1)
-
-# #     st.header(option)
-# #     filtered_df = tribe_df(option)
-# #     filtered_df
-
-
-
-# # if st.sidebar.checkbox('Show all voters'):
-# #     st.header('قائمة الناخبين')
-# #     st.dataframe(df,height=400)
-# #     st.markdown('---')
-# # OR:  st.dataframe(df)
-
-
-
-# # """
-# # # My first app
-# # Here's our first attempt at using data to create a table:
-# # """
-
-# # df = pd.DataFrame({
-# #   'first column': [1, 2, 3, 4],
-# #   'second column': [10, 20, 30, 40]
-# # })
-
-# # df
-
-# # map_data = pd.DataFrame(
-# #     np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
-# #     columns=['lat', 'lon'])
-
-# # st.map(map_data)
-
-# # if st.checkbox('Show dataframe'):
-# #     chart_data = pd.DataFrame(
-# #        np.random.randn(20, 3),
-# #        columns=['a', 'b', 'c'])
-
-# #     st.line_chart(chart_data)
-
-# # OR: 
-# # if st.checkbox('Show dataframe'):
-# #    df
-
-# ##################################
-# ### Code below lets you see voter based on their tribes.
-
-# #st.sidebar.header('جداول القبائل الأخرى')
-
-# # option = st.selectbox(
-# #     'Which number do you like best?',
-# #      tribes)
-
-# # 'You selected: ', option
-# # df[df['LastName'] == option]
-# # ##################################
-
-# ## You can move this to the sidebar. simply by adding sidebar to selectbox command:
-
-
-
-# ####################################
-
-
-
-# ###### 
-
-# ######### 
-# # Progress bar
-# #'Starting a long computation...'
-
-# # # Add a placeholder
-# # import time
-# # latest_iteration = st.empty()
-# # bar = st.progress(0)
-
-# # for i in range(100):
-# #   # Update the progress bar with each iteration.
-# #   latest_iteration.text(f'Iteration {i+1}')
-# #   bar.progress(i + 1)
-# #   time.sleep(0.1)
-
-# # '...and now we\'re done!'
-
-#st.dataframe(currency_hist)
-    #st.line_chart(currency_hist['price'])
-    # chart = alt.Chart(currency_hist.reset_index()).mark_line().encode(
-    # alt.X('index', axis=alt.Axis(title='Date')), alt.Y(
-    #     'price',axis=alt.Axis(format='$', title='Price'), scale=alt.Scale(
-    #         type='log'))).interactive()
-    # st.altair_chart(chart, use_container_width=True)
-
-
-
-
+#     "If btc makes sideways action, then expect altcoins to start running again",
     
+#     "It's all fun and games until you wake up one day and you're down 20 or 30%" ,
+    
+#     "Getting your portfolio in a position where you can handle all three scenarios is the way to win in crypto",
+    
+#     "The main reason I hold LINK is: its negative volatility is offset by Bitcoin positive volatility",
+    
+#     "You'll never go broke taking profits",
+    
+#     "You'll never go broke taking profits",
+    
+#     "We need Ethereum to outperform Bitcoin in order to justify holding it",
+    
+#     "Expecting an immediate ROI is pretty much gambling",
+    
+#     "I think if you're in crypto, I think the majority of your portfolio should be in Bitcoin",
+    
+#     "The faster you get to thinking of crypto in terms of more than USD, the better. we look at Ethereum and LINK in terms of Bitcoin not just USD. this will help you understand what’s going on and be intuitive about what to do",
+    
+#     "The goal is to time momentum shifts in the market not chase pumps",
+    
+#     "The focus is to slowly move in and out, not pretend like we can time bottoms and tops",
+# ]
+
+
+# randnum = np.random.randint(len(Ben_statememnts))
+# statement = Ben_statememnts[randnum]
+# st.sidebar.markdown("---")
+# st.sidebar.write("> {} --  **Benjamin Cowen** ".format(statement))
+# st.sidebar.markdown("")
+
+
