@@ -161,7 +161,7 @@ if df_choice:
 
             pts = alt.selection(type="interval", encodings=["x"])
 
-            extension = alt.Chart(currency_hist.reset_index(), width=630).mark_line().encode(
+            extension = alt.Chart(currency_hist.reset_index(), width=630, title="{}'s Extension from 20 Day Moving Average".format(df_choice)).mark_line().encode(
                 alt.X('index', axis=alt.Axis(title='Date')), alt.Y('% extension from 20D MA'),
                 tooltip=['index', 'price_x', '20D MA', '% extension from 20D MA']
                 
