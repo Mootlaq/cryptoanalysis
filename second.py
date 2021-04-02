@@ -220,7 +220,7 @@ if df_choice:
                 #y='ETH 1W change percent',
                 alt.Y('ETH 1W change percent', axis=alt.Axis(title="ETH price drop (%)")),
                 tooltip=['BTC 1W change percent', 'ETH 1W change percent'],
-                color=alt.Color('ETH dropped more', scale=alt.Scale(scheme='category20'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
+                color=alt.Color('ETH dropped more', scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
                     'ETH dropped more', if_(datum['ETH dropped more'] == 0, 'Less', 'More')).interactive()
 
                 st.altair_chart(BTCETH, use_container_width=True)
@@ -243,9 +243,9 @@ if df_choice:
                 BTCADA = alt.Chart(BTCADA20drop.reset_index(), title="When Bitcoin drops 20%, what does Cardano do?").mark_bar().encode(
                 alt.X('Date'),
                 alt.Y('ADA 1W change percent', axis=alt.Axis(title="ADA price drop (%)")),
-                alt.Color('ADA dropped more', scale=alt.Scale(scheme='category20'), legend=alt.Legend(title="Drop compared to BTC")),
+                alt.Color('ADA dropped more', scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC")),
                 tooltip=['BTC 1W change percent', 'ADA 1W change percent']).transform_calculate(
-                    'ADA dropped more', if_(datum['ADA dropped more'] == 0, 'Less', 'More')).interactive()
+                    'ADA dropped more', if_(datum['ADA dropped more'] != 0, 'More', 'Less')).interactive()
 
                 st.altair_chart(BTCADA, use_container_width=True)
 
