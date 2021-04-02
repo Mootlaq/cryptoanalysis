@@ -1,4 +1,5 @@
 .*
+!/.gitignore
 BTC.ipynb
 Untitled.ipynb
 tgf.html
