@@ -148,7 +148,7 @@ if df_choice:
 
         st.markdown('---')
         st.header("Charts, Charts, Charts!")
-        charts_options = ["Topic", "20D Extenstion", "Annual price", "When BTC drops 20%..."]
+        charts_options = ["Topic", "20D Extenstion", "Annual price", "When BTC drops..."]
         chart_box = st.selectbox("Choose a topic", charts_options)
         if chart_box == "20D Extenstion":
             # if df_choice == "Bitcoin":
@@ -210,44 +210,125 @@ if df_choice:
                 st.header("{} Annual Price".format(df_choice))
                 st.altair_chart(annual_chart, use_container_width=True)
         
-        elif chart_box == "When BTC drops 20%...":
+        elif chart_box == "When BTC drops...":
             if df_choice == 'Ethereum':
-                
-                BTCETH20drop = pd.read_csv('BTCETH20drop.csv')
-                #st.write(BTCETH20drop)
-                BTCETH = alt.Chart(BTCETH20drop.reset_index(), title="When Bitcoin drops 20%, what does Ethereum do?").mark_bar().encode(
-                alt.X('Date'),
-                #y='ETH 1W change percent',
-                alt.Y('ETH 1W change percent', axis=alt.Axis(title="ETH price drop (%)")),
-                tooltip=['BTC 1W change percent', 'ETH 1W change percent'],
-                color=alt.Color('ETH dropped more', scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
-                    'ETH dropped more', if_(datum['ETH dropped more'] == 0, 'Less', 'More')).interactive()
+                st.header("When BTC drops 10%...")
+                BTCETH10drop = pd.read_csv('BTCETH10drop_V2.csv', index_col=0)
 
-                st.altair_chart(BTCETH, use_container_width=True)
+                BTCETH10 = alt.Chart(BTCETH10drop.reset_index(), title="When Bitcoin drops 10%, what does {} do?".format(df_choice)).mark_bar().encode(
+                alt.X('yearmonthdate(index):N', title="Date"),
+                alt.Y('{} price percent diff'.format(df_choice), axis=alt.Axis(title="{} price drop (%)".format(df_choice))),
+                tooltip=['BTC price percent diff', '{} price percent diff'.format(df_choice.capitalize())],
+                color=alt.Color('{} dropped more'.format(df_choice), scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
+                    '{} dropped more'.format(df_choice), if_(datum['{} dropped more'.format(df_choice)] == 0, 'Less', 'More')).interactive()
+
+            
+                st.altair_chart(BTCETH10, use_container_width=True)
+
+
+                ######################## 20% drop ########################
+
+
+                st.header("When BTC drops 20%...")
+                BTCETH20drop = pd.read_csv('BTCETH20drop_V2.csv', index_col=0)
+
+                BTCETH20 = alt.Chart(BTCETH20drop.reset_index(), title="When Bitcoin drops 20%, what does {} do?".format(df_choice)).mark_bar().encode(
+                alt.X('yearmonthdate(index):N', title="Date"),
+                alt.Y('{} price percent diff'.format(df_choice), axis=alt.Axis(title="{} price drop (%)".format(df_choice))),
+                tooltip=['BTC price percent diff', '{} price percent diff'.format(df_choice.capitalize())],
+                color=alt.Color('{} dropped more'.format(df_choice), scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
+                    '{} dropped more'.format(df_choice), if_(datum['{} dropped more'.format(df_choice)] == 0, 'Less', 'More')).interactive()
+
+            
+                st.altair_chart(BTCETH20, use_container_width=True)
+
+
+                ######################## Another coin ########################
 
             elif df_choice == 'Chainlink':
                 
-                BTCLINK20drop = pd.read_csv('BTCLINK20drop.csv')
-                BTCLINK = alt.Chart(BTCLINK20drop.reset_index(), title="When Bitcoin drops 20%, what does LINK do?").mark_bar().encode(
-                alt.X('Date'),
-                alt.Y('LINK 1W change percent', axis=alt.Axis(title="LINK price drop (%)")),
-                tooltip=['BTC 1W change percent', 'LINK 1W change percent'],
-                color=alt.Color('LINK dropped more', scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
-                    'LINK dropped more', if_(datum['LINK dropped more'] != 0, 'More', 'Less')).interactive()
 
-                st.altair_chart(BTCLINK, use_container_width=True)
+                st.header("When BTC drops 10%...")
+                BTCLINK10drop = pd.read_csv('BTClink10drop_V2.csv', index_col=0)
+
+                BTCLINK10 = alt.Chart(BTCLINK10drop.reset_index(), title="When Bitcoin drops 10%, what does {} do?".format(df_choice)).mark_bar().encode(
+                alt.X('yearmonthdate(index):N', title="Date"),
+                alt.Y('{} price percent diff'.format(df_choice), axis=alt.Axis(title="{} price drop (%)".format(df_choice))),
+                tooltip=['BTC price percent diff', '{} price percent diff'.format(df_choice.capitalize())],
+                color=alt.Color('{} dropped more'.format(df_choice), scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
+                    '{} dropped more'.format(df_choice), if_(datum['{} dropped more'.format(df_choice)] == 0, 'Less', 'More')).interactive()
+
+
+                # BTCLINK = alt.Chart(BTCLINK20drop.reset_index(), title="When Bitcoin drops 20%, what does LINK do?").mark_bar().encode(
+                # alt.X('Date'),
+                # alt.Y('LINK 1W change percent', axis=alt.Axis(title="LINK price drop (%)")),
+                # tooltip=['BTC 1W change percent', 'LINK 1W change percent'],
+                # color=alt.Color('LINK dropped more', scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
+                #     'LINK dropped more', if_(datum['LINK dropped more'] != 0, 'More', 'Less')).interactive()
+
+                st.altair_chart(BTCLINK10, use_container_width=True)
+
+                ######################## 20% drop ########################
+                
+                st.header("When BTC drops 20%...")
+                BTCLINK20drop = pd.read_csv('BTClink20drop_V2.csv', index_col=0)
+
+                BTCLINK20 = alt.Chart(BTCLINK20drop.reset_index(), title="When Bitcoin drops 20%, what does {} do?".format(df_choice)).mark_bar().encode(
+                alt.X('yearmonthdate(index):N', title="Date"),
+                alt.Y('{} price percent diff'.format(df_choice), axis=alt.Axis(title="{} price drop (%)".format(df_choice))),
+                tooltip=['BTC price percent diff', '{} price percent diff'.format(df_choice.capitalize())],
+                color=alt.Color('{} dropped more'.format(df_choice), scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
+                    '{} dropped more'.format(df_choice), if_(datum['{} dropped more'.format(df_choice)] == 0, 'Less', 'More')).interactive()
+
+                st.altair_chart(BTCLINK20, use_container_width=True)
+
+                ######################## Another coin ########################
 
             elif df_choice == 'Cardano':
-                BTCADA20drop = pd.read_csv('BTCADA20drop.csv')
-                #st.write(BTCADA20drop)
-                BTCADA = alt.Chart(BTCADA20drop.reset_index(), title="When Bitcoin drops 20%, what does Cardano do?").mark_bar().encode(
-                alt.X('Date'),
-                alt.Y('ADA 1W change percent', axis=alt.Axis(title="ADA price drop (%)")),
-                alt.Color('ADA dropped more', scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC")),
-                tooltip=['BTC 1W change percent', 'ADA 1W change percent']).transform_calculate(
-                    'ADA dropped more', if_(datum['ADA dropped more'] != 0, 'More', 'Less')).interactive()
+                
+                st.header("When BTC drops 10%...")
+                BTCADA10drop = pd.read_csv('BTCADA10drop_V2.csv', index_col=0)
 
-                st.altair_chart(BTCADA, use_container_width=True)
+                BTCADA10 = alt.Chart(BTCADA10drop.reset_index(), title="When Bitcoin drops 10%, what does {} do?".format(df_choice)).mark_bar().encode(
+                alt.X('yearmonthdate(index):N', title="Date"),
+                alt.Y('{} price percent diff'.format(df_choice), axis=alt.Axis(title="{} price drop (%)".format(df_choice))),
+                tooltip=['yearmonthdate(index)', 'BTC price percent diff', '{} price percent diff'.format(df_choice.capitalize())],
+                color=alt.Color('{} dropped more'.format(df_choice), scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
+                    '{} dropped more'.format(df_choice), if_(datum['{} dropped more'.format(df_choice)] == 0, 'Less', 'More')).interactive()
+
+                st.altair_chart(BTCADA10, use_container_width=True)
+
+                ######################## 20% drop ########################
+
+                st.header("When BTC drops 20%...")
+                BTCADA20drop = pd.read_csv('BTCADA20drop_V2.csv', index_col=0)
+
+                BTCADA20 = alt.Chart(BTCADA20drop.reset_index(), title="When Bitcoin drops 20%, what does {} do?".format(df_choice)).mark_bar().encode(
+                alt.X('yearmonthdate(index):N', title="Date"),
+                alt.Y('{} price percent diff'.format(df_choice), axis=alt.Axis(title="{} price drop (%)".format(df_choice))),
+                tooltip=['yearmonthdate(index)', 'BTC price percent diff', '{} price percent diff'.format(df_choice.capitalize())],
+                color=alt.Color('{} dropped more'.format(df_choice), scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC"))).transform_calculate(
+                    '{} dropped more'.format(df_choice), if_(datum['{} dropped more'.format(df_choice)] == 0, 'Less', 'More')).interactive()
+
+                
+                st.altair_chart(BTCADA20, use_container_width=True)
+
+
+
+
+
+
+
+
+                #st.write(BTCADA20drop)
+                    # BTCADA = alt.Chart(BTCADA20drop.reset_index(), title="When Bitcoin drops 20%, what does Cardano do?").mark_bar().encode(
+                    # alt.X('Date'),
+                    # alt.Y('ADA 1W change percent', axis=alt.Axis(title="ADA price drop (%)")),
+                    # alt.Color('ADA dropped more', scale=alt.Scale(scheme='paired'), legend=alt.Legend(title="Drop compared to BTC")),
+                    # tooltip=['BTC 1W change percent', 'ADA 1W change percent']).transform_calculate(
+                    #     'ADA dropped more', if_(datum['ADA dropped more'] != 0, 'More', 'Less')).interactive()
+
+                
 
             else:
                 st.warning("This chart is only available for Ethereum, Chainlink or Cardano.")
