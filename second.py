@@ -338,45 +338,45 @@ if df_choice:
 
 
 
-# Ben_statememnts = [
-#     "I don't consider Ethereum an altcoin",
+Ben_statememnts = [
+    "I don't consider Ethereum an altcoin",
 
-#     "It's not about return, it's about your risk adjusted return",
+    "It's not about return, it's about your risk adjusted return",
     
-#     "I can't tell you what's gonna happen in the short term I just try to react to it",
+    "I can't tell you what's gonna happen in the short term I just try to react to it",
     
-#     "Remember it's better to accumulate a coin when it's going quiet not when it's going parabolic",
+    "Remember it's better to accumulate a coin when it's going quiet not when it's going parabolic",
     
-#     "If btc makes sideways action, then expect altcoins to start running again",
+    "If btc makes sideways action, then expect altcoins to start running again",
     
-#     "It's all fun and games until you wake up one day and you're down 20 or 30%" ,
+    "It's all fun and games until you wake up one day and you're down 20 or 30%" ,
     
-#     "Getting your portfolio in a position where you can handle all three scenarios is the way to win in crypto",
+    "Getting your portfolio in a position where you can handle all three scenarios is the way to win in crypto",
     
-#     "The main reason I hold LINK is: its negative volatility is offset by Bitcoin positive volatility",
+    "The main reason I hold LINK is: its negative volatility is offset by Bitcoin positive volatility",
     
-#     "You'll never go broke taking profits",
+    "You'll never go broke taking profits",
     
-#     "You'll never go broke taking profits",
+    "You'll never go broke taking profits",
     
-#     "We need Ethereum to outperform Bitcoin in order to justify holding it",
+    "We need Ethereum to outperform Bitcoin in order to justify holding it",
     
-#     "Expecting an immediate ROI is pretty much gambling",
+    "Expecting an immediate ROI is pretty much gambling",
     
-#     "I think if you're in crypto, I think the majority of your portfolio should be in Bitcoin",
+    "I think if you're in crypto, I think the majority of your portfolio should be in Bitcoin",
     
-#     "The faster you get to thinking of crypto in terms of more than USD, the better. we look at Ethereum and LINK in terms of Bitcoin not just USD. this will help you understand what’s going on and be intuitive about what to do",
+    "The faster you get to thinking of crypto in terms of more than USD, the better. we look at Ethereum and LINK in terms of Bitcoin not just USD. this will help you understand what’s going on and be intuitive about what to do",
     
-#     "The goal is to time momentum shifts in the market not chase pumps",
+    "The goal is to time momentum shifts in the market not chase pumps",
     
-#     "The focus is to slowly move in and out, not pretend like we can time bottoms and tops",
-# ]
+    "The focus is to slowly move in and out, not pretend like we can time bottoms and tops",
+]
 
 
-# randnum = np.random.randint(len(Ben_statememnts))
-# statement = Ben_statememnts[randnum]
-# st.sidebar.markdown("---")
-# st.sidebar.write("> {} --  **Benjamin Cowen** ".format(statement))
-# st.sidebar.markdown("")
+randnum = np.random.randint(len(Ben_statememnts))
+statement = Ben_statememnts[randnum]
+st.sidebar.markdown("---")
+st.sidebar.write("> {} --  **Benjamin Cowen** ".format(statement))
+st.sidebar.markdown("")
 
 
